@@ -30,12 +30,12 @@ from skimage.io import imread, imsave
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--set_dir', default='data/Test', type=str, help='directory of test dataset')
-    parser.add_argument('--set_names', default=['Set68','Set12'], type=list, help='name of test dataset')
+    parser.add_argument('--set_names', default=['Set12'], type=list, help='name of test dataset')
     parser.add_argument('--sigma', default=25, type=int, help='noise level')
     parser.add_argument('--model_dir', default=os.path.join('models','DnCNN_sigma25'), type=str, help='directory of the model')
     parser.add_argument('--model_name', default='model_001.hdf5', type=str, help='the model name')
     parser.add_argument('--result_dir', default='results', type=str, help='directory of results')
-    parser.add_argument('--save_result', default=0, type=int, help='save the denoised image, 1 or 0')
+    parser.add_argument('--save_result', default=1, type=int, help='save the denoised image, 1 or 0')
     return parser.parse_args()
     
 def to_tensor(img):
@@ -125,7 +125,7 @@ if __name__ == '__main__':
                 ssim_x_ = compare_ssim(x, x_)
                 if args.save_result:
                     name, ext = os.path.splitext(im)
-                    show(np.hstack((y,x_))) # show the image
+                    #show(np.hstack((y,x_))) # show the image
                     save_result(x_,path=os.path.join(args.result_dir,set_cur,name+'_dncnn'+ext)) # save the denoised image
                 psnrs.append(psnr_x_)
                 ssims.append(ssim_x_)
