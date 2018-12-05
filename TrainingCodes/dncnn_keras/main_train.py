@@ -40,7 +40,7 @@ parser.add_argument('--model', default='DnCNN', type=str, help='choose a type of
 parser.add_argument('--batch_size', default=128, type=int, help='batch size')
 parser.add_argument('--train_data', default='data/Train400', type=str, help='path of train data')
 parser.add_argument('--sigma', default=25, type=int, help='noise level')
-parser.add_argument('--epoch', default=300, type=int, help='number of train epoches')
+parser.add_argument('--epoch', default=100, type=int, help='number of train epoches')
 parser.add_argument('--lr', default=1e-3, type=float, help='initial learning rate for Adam')
 parser.add_argument('--save_every', default=1, type=int, help='save model at every x epoches')
 args = parser.parse_args()
